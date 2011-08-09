@@ -1,0 +1,20 @@
+{
+  "name": "Solidot",
+  "description": "奇客的资讯，重要的东西",
+  "version": "2.2.2",
+  "app": {
+    "launch": {
+      "local_path": "main.html"
+    }
+  },
+  "icons": {
+    "16": "icon_16.png",
+    "128": "icon_128.png"
+  },
+  "permissions": [
+    "http://solidot.org/*",
+    "unlimitedStorage",
+    "notifications"
+  ],
+  "background_page" : "background.html"
+}

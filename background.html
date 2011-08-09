@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<!--
+ * Copyright (c) 2010 by Shizhao.  Use of this
+ * source code is governed by a BSD license.
+-->
+<html>
+  <head>
+    <script>
+       noti()
+       function noti()
+       {
+        var xhr = new XMLHttpRequest();
+        var url = 'http://solidot.org/index.pl';
+        xhr.open('GET', url, true);
+        xhr.onreadystatechange = function(data) {
+           if (xhr.readyState == 4) {
+             var data = xhr.responseText;
+             if (data != null)
+             {
+               var r=data.match(/(You have).*?(waiting for you)/g)[0];
+               var patt1 = new RegExp("solidot");
+               var rr = patt1.test(r);
+//           var rr = r.match(/\d\s(new messages)/g)[0]
+               if (rr) {
+//            r= "You have " + r + " waiting for you." 
+//          var notification = webkitNotifications.createNotification(
+//         'icon_128.png',  // icon url - can be relative
+//         '通知：',  // notification title
+//         r  // notification body text
+//         );
+                var notification = webkitNotifications.createHTMLNotification(
+                     'notification.html'  // html url - can be relative
+                    );
+// Then show the notification.
+                notification.show();
+               }
+             }
+           }
+         }
+         xhr.send(null);
+       }
+      setInterval(noti, 60*60*1000);
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
